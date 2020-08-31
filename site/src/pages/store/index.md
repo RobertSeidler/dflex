@@ -1,4 +1,4 @@
-# @dflex/store
+# DFlex Store
 
 The place where you traverse through the DOM tree using element-id.
 

@@ -1,6 +1,4 @@
-# @dflex/dom-gen
-
-DOM relations generator algorithm.
+# DFlex DOM Generator Algorithm
 
 ```bash
 npm install @dflex/dom-gen
