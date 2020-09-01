@@ -36,6 +36,14 @@ const plugins = [
     },
   },
   {
+    resolve: "gatsby-plugin-web-font-loader",
+    options: {
+      google: {
+        families: ["Roboto Mono"],
+      },
+    },
+  },
+  {
     resolve: `gatsby-plugin-manifest`,
     options: {
       name: `DFlex`,
@@ -44,13 +52,12 @@ const plugins = [
       background_color: "#40241a",
       theme_color: "#40241a",
       display: `minimal-ui`,
-      // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
     },
   },
   {
     resolve: `gatsby-plugin-page-creator`,
     options: {
-      path: `${__dirname}/src/pages`,
+      path: `${__dirname}/src/templates/docs.js`,
     },
   },
   {
