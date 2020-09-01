@@ -6,8 +6,39 @@ module.exports = {
     author: `Jalal Maskoun`,
   },
   plugins: [
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "docs",
+        path: `${__dirname}/content/`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        pathToConfigModule: "src/typography",
+        defaultLayouts: {
+          default: require.resolve("./src/templates/docs.js"),
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1035,
+              sizeByPixelDensity: true,
+            },
+          },
+          {
+            resolve: "gatsby-remark-copy-linked-files",
+          },
+        ],
+        extensions: [`.mdx`, `.md`],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -20,17 +51,6 @@ module.exports = {
         // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-glamor`,
-    {
-      resolve: "gatsby-plugin-mdx",
-      options: {
-        pathToConfigModule: "src/typography",
-        defaultLayouts: {
-          default: require.resolve("./src/components/layout.js"),
-        },
-        extensions: [`.mdx`, `.md`],
-      },
-    },
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
@@ -38,14 +58,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: "UA-167775444-1",
+        head: true,
+        anonymize: false,
       },
     },
-
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };
